@@ -32,4 +32,4 @@ final_df = unique_complaints.join(num_complaints, ['_1', '_2']) \
     .withColumn("percent", ((func.col("max(count)") / func.col("count(_4)"))*100).cast('integer')) \
     .drop("max(count)").orderBy('_1')
 
-return final_df.write.csv(sys.argv[2])
+final_df.write.csv(sys.argv[2])
